@@ -185,4 +185,14 @@ st.display()
 
 /* 
 
-OUTPUT:*/
+OUTPUT:
+
+This is Parent class constructor
+This is child class constructor
+This is child class show() method
+This is a parent class display() method 
+This is a parent class display() method 
+Name is  John  is  12  years old and studing in  6 and is a  Male
+Name is  John  is  12  years old and studing in  6
+
+ */
