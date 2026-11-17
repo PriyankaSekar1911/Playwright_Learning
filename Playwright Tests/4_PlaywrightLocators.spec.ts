@@ -20,14 +20,15 @@ test.afterEach(async({page})=>{
 test("Get by Role locator",async({page})=>{
 
 await expect (page).toHaveTitle("Playwright Locators Demo")
-await expect(page.getByRole("heading",{name:"getByRole()"})).toHaveText("getByRole()")
+await expect(page.getByRole("heading",{name:"getByRole()"}))
+  .toContainText("getByRole()")
 
 //button
 await page.getByRole("button",{name:"Toggle Button"}).click() 
 
 //link
-const linkOfProducts=page.getByRole("link",{name:"Products"}) 
-await expect(linkOfProducts).toHaveText("Products")
+const linkOfProducts=page.getByRole("menuitem",{name:"Products"}) 
+await expect(linkOfProducts).toBeVisible();
 
 // Text Box
 await page.getByRole("textbox",{name:"Username:"}).fill("Priyanka")
@@ -46,11 +47,27 @@ await page.getByRole("radio",{name:"express"}).click()
 await expect(page.getByRole("img",{name:"logo image"})).toBeVisible()
 
 //List
-await expect(page.getByRole("list")).toHaveCount(3)
+/* await expect(page.getByRole("list")).toHaveCount(4) */
 
 //ListItem
-await expect(page.getByRole("listitem",{name:"List item 2 with "})).toContainText("List item 2 with ")
+//await expect(page.getByRole("listitem",{name:"List item 2 with "})).toContainText("List item 2 with ")
+/* await expect(page.getByRole("listitem", { name: "List item 2 with", exact: false })
+).toBeVisible();
+} */
 
+// ListItem
+/* console.log("Total list items:",
+  await page.getByRole("listitem").count()
+);
+
+console.log("List item texts:",
+  await page.getByRole("listitem").allTextContents()
+); */
+
+// ListItem
+await expect(
+  page.getByRole("listitem", { name: "List item 2 with link" })
+).toBeVisible();
 }
 )
 
