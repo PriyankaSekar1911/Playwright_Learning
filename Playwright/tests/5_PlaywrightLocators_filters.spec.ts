@@ -213,8 +213,11 @@ test('18.Find specific product and verify its button',async({page})=>{
 })
 
 test('19.Verify stock status counts',async({page})=>{
-  const StockStatus= page.getByRole('listitem').filter({hasText:'In stock'})
-  console.log("Count of stocks status is ",await StockStatus.count())
+  const InStockStatus= page.getByRole('listitem').filter({hasText:'In stock'})
+  const OutStockStatus= page.getByRole('listitem').filter({hasText:'Out of stock'})
+
+  console.log("Count of In stocks status is ",await InStockStatus.count())
+  console.log("Count of Out of stocks status is ",await OutStockStatus.count())
 })
 
 
